@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import ReactDOM from 'react-dom'
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000';
+
 interface CaseItemCardProps {
   item: any;
   provided: any;
@@ -39,9 +41,10 @@ export const CaseItemCard = ({ item, provided, snapshot, onDelete }: CaseItemCar
         <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0 pointer-events-none">
           <div className="h-12 w-16 sm:h-14 sm:w-20 bg-muted rounded-md overflow-hidden border border-border flex-shrink-0">
             <img 
-              src={`http://localhost:4000${item.image_url}`} 
+              // 하드코딩된 localhost 대신 환경 변수 API_BASE_URL을 사용합니다.
+              src={`${API_BASE_URL}${item.image_url}`} 
               className="w-full h-full object-cover" 
-              alt="" 
+              alt={item.title || "시공 사례 이미지"} 
             />
           </div>
           <div className="min-w-0 flex-1">
