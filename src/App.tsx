@@ -14,6 +14,9 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 
+import ConstructionCaseManager from "@/components/admin/ConstructionCaseManager"
+import { Toaster } from "@/components/ui/sonner"
+
 function Page() {
   return (
     <SidebarProvider>
@@ -29,27 +32,22 @@ function Page() {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Building Your Application
-                  </BreadcrumbLink>
+                  <BreadcrumbLink href="#">시공 관리</BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                  <BreadcrumbPage>시공 사례 등록 및 순서 설정</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
           </div>
         </header>
+
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-          </div>
-          <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
+          <ConstructionCaseManager />
         </div>
       </SidebarInset>
+      <Toaster position="top-right" richColors closeButton />
     </SidebarProvider>
   )
 }
